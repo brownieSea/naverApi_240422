@@ -115,21 +115,6 @@ QPushButton {
       <height>31</height>
      </rect>
     </property>
-    <item>
-     <property name="text">
-      <string extracomment="News">NEWS</string>
-     </property>
-    </item>
-    <item>
-     <property name="text">
-      <string>BLOG</string>
-     </property>
-    </item>
-    <item>
-     <property name="text">
-      <string>CafeArticle</string>
-     </property>
-    </item>
    </widget>
   </widget>
   <widget class="QMenuBar" name="menubar">

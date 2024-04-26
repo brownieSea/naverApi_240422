@@ -16,22 +16,25 @@ class MainWindow(QMainWindow, form_class):
         self.setWindowIcon(QIcon("img/icon.png"))
         self.statusBar().showMessage("Naver News Search Application v1.0")
 
+        # combobox 값 설정
+        self.select_nord.addItem("NEWS", 'news')
+        self.select_nord.addItem("BLOG", 'blog')
+        self.select_nord.addItem("CAFE", 'cafearticle')
+
         self.searchBtn.clicked.connect(self.searchBtn_clicked)
         self.input_keyword.returnPressed.connect(self.searchBtn_clicked)
         self.result_table.doubleClicked.connect(self.link_doubleClicked) # 테이블의 항목이 더블클릭되면 함수 호출
 
-        #self.select_nord.currentIndexChanged.connect(self.nord_selected)
-
     def searchBtn_clicked(self):
-        nord = self.select_nord.currentText().lower()
+        nord = self.select_nord.currentData()
         keyword = self.input_keyword.text()  # 사용자가 입력한 검색어 가져오기
         if keyword == "":
             QMessageBox.warning(self, "입력오류\n검색어는 필수 입력사항입니다")
         else:
             naverApi = NaverApi()  # import 된 naverSearchAPI 클래스로 객체 생성
             searchResult = naverApi.getNaverSearch(nord, keyword, 1, 20)
-
             if nord == 'news':
+
                 newsResult = searchResult['items']  # json으로 응답온 텍스트 중 뉴스 내용만 저장
                 self.outputTable(newsResult)
             elif nord == 'blog':
@@ -42,7 +45,7 @@ class MainWindow(QMainWindow, form_class):
                 self.outputTable(cafeResult)
 
     def outputTable(self, searchResult):  # 뉴스  검색 결과를 테이블 위젯에 출력하는 함수
-        nord = self.select_nord.currentText().lower()
+        nord = self.select_nord.currentData()
         self.result_table.setSelectionMode(QAbstractItemView.SingleSelection)  # json 값 가져올때 무조건 넣는다
         self.result_table.setColumnCount(3)  # 출력되는 테이블을 3열로 설정
         self.result_table.setRowCount(len(searchResult))  # 출력되는 테이블 행 수를 설정. 가변적인 경우가 많으므로 가져온 데이터의 갯수를 행으로 설정.
@@ -72,7 +75,6 @@ class MainWindow(QMainWindow, form_class):
             elif nord == 'blog':
                 articleLink = article['link']  # blog 링크
                 articleDate = article['postdate']
-
             else:
                 self.result_table.setHorizontalHeaderLabels(['Title', 'Link', 'Cafe Name'])
                 articleLink = article['link']  # blog 링크
