@@ -57,11 +57,6 @@ class MainWindow(QMainWindow, form_class):
         self.result_table.setEditTriggers(QAbstractItemView.NoEditTriggers)
 
         for i, article in enumerate(searchResult):  # enumerate 는 index 값을 i 에 반환한다  i = 0~게시글수
-            # newsTitle = article['title'] # 뉴스 제목
-            # newsTitle = article.replace('&quot', '').replace(';','').replace('<b>','').replace('</b>','')
-            # newsDate = article['pubDate']  # 뉴스게시일
-            # newsDate = newsDate[0:25]
-
             # html 코드 제거해서 반환하는 함수
             def remove_html_tags(text):
                 clean = re.compile('<.*?>')
