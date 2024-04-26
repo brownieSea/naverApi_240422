@@ -127,7 +127,7 @@ QPushButton {
     </item>
     <item>
      <property name="text">
-      <string>CAFE</string>
+      <string>CafeArticle</string>
      </property>
     </item>
    </widget>
