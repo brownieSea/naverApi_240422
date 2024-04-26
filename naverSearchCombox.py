@@ -52,8 +52,8 @@ class MainWindow(QMainWindow, form_class):
         # 테이블의 첫 행(열 이름 설정
         self.result_table.setHorizontalHeaderLabels(['Title', 'Link', 'Date'])
         self.result_table.setColumnWidth(0, 300) # 1열의 넓이 설정
-        self.result_table.setColumnWidth(1, 190) # 2열의 넓이 설정
-        self.result_table.setColumnWidth(2, 120) # 3열의 넓이 설정
+        self.result_table.setColumnWidth(1, 200) # 2열의 넓이 설정
+        self.result_table.setColumnWidth(2, 130) # 3열의 넓이 설정
 
         #테이블에 출력되는 검색결과를 클릭시 수정 안되게 하는 기능 추가
         self.result_table.setEditTriggers(QAbstractItemView.NoEditTriggers)

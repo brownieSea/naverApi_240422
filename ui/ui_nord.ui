@@ -14,29 +14,12 @@
    <string>MainWindow</string>
   </property>
   <property name="styleSheet">
-   <string notr="true">QLineEdit {
-	border:0;
-	border-bottom:1px solid #ccc;
-	padding:5px;
-}
-
-QPushButton {
-	background-color:#333;
-	border:1px solid #333;
-	color:#fff;
-	border-radius:5px
-}
-QTableWidget {
-	border:0;
-	background-color:#fff;
-}
-
-QTableWidget Header {
-	background-color;gray;
+   <string notr="true">QMainWindow {
+	background-color: rgb(255, 255, 255);
 }
 
 QLineEdit {
-    border:1px solid #ccc;
+    border-bottom:1px solid #ccc;
 }
 
 QPushButton {
@@ -45,15 +28,20 @@ QPushButton {
     background-color: #3F89B4;
     color: #FFFFFF;
 	font-weight:bold;
-}</string>
+}
+
+QTableWidget {
+	border:0;
+}
+</string>
   </property>
   <widget class="QWidget" name="centralwidget">
    <widget class="QLabel" name="label">
     <property name="geometry">
      <rect>
-      <x>10</x>
+      <x>410</x>
       <y>10</y>
-      <width>651</width>
+      <width>251</width>
       <height>20</height>
      </rect>
     </property>
@@ -80,7 +68,7 @@ QPushButton {
      </rect>
     </property>
     <property name="styleSheet">
-     <string notr="true">border:1px solid rgb(55, 111, 166);</string>
+     <string notr="true"/>
     </property>
    </widget>
    <widget class="QPushButton" name="searchBtn">
@@ -99,9 +87,9 @@ QPushButton {
    <widget class="QTableWidget" name="result_table">
     <property name="geometry">
      <rect>
-      <x>10</x>
+      <x>0</x>
       <y>90</y>
-      <width>651</width>
+      <width>670</width>
       <height>251</height>
      </rect>
     </property>
