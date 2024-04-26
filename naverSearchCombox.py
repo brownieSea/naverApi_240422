@@ -35,6 +35,7 @@ class MainWindow(QMainWindow, form_class):
             searchResult = naverApi.getNaverSearch(nord, keyword, 1, 20)
             if nord == 'news':
 
+
                 newsResult = searchResult['items']  # json으로 응답온 텍스트 중 뉴스 내용만 저장
                 self.outputTable(newsResult)
             elif nord == 'blog':
