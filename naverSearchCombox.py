@@ -29,13 +29,11 @@ class MainWindow(QMainWindow, form_class):
         nord = self.select_nord.currentData()
         keyword = self.input_keyword.text()  # 사용자가 입력한 검색어 가져오기
         if keyword == "":
-            QMessageBox.warning(self, "입력오류\n검색어는 필수 입력사항입니다")
+            QMessageBox.warning(self, "입력오류", "검색어는 필수 입력사항입니다")
         else:
             naverApi = NaverApi()  # import 된 naverSearchAPI 클래스로 객체 생성
             searchResult = naverApi.getNaverSearch(nord, keyword, 1, 20)
             if nord == 'news':
-
-
                 newsResult = searchResult['items']  # json으로 응답온 텍스트 중 뉴스 내용만 저장
                 self.outputTable(newsResult)
             elif nord == 'blog':
@@ -72,18 +70,18 @@ class MainWindow(QMainWindow, form_class):
                 articleLink = article['originallink']  # 뉴스 링크
                 str_date = article['pubDate']
                 articleDate = datetime.datetime.strptime(str_date, '%a, %d %b %Y %H:%M:%S %z')
-                articleDate = articleDate.strftime('%y.%m.%d(%a) %H:%M:%S')
+                articleData1 = articleDate.strftime('%y.%m.%d(%a) %H:%M:%S')
             elif nord == 'blog':
                 articleLink = article['link']  # blog 링크
-                articleDate = article['postdate']
+                articleData1 = article['postdate']
             else:
                 self.result_table.setHorizontalHeaderLabels(['Title', 'Link', 'Cafe Name'])
                 articleLink = article['link']  # blog 링크
-                articleDate = article['cafename']
+                articleData1 = article['cafename']
 
             self.result_table.setItem(i, 0, QTableWidgetItem(articleTitle))
             self.result_table.setItem(i, 1, QTableWidgetItem(articleLink))
-            self.result_table.setItem(i, 2, QTableWidgetItem(articleDate))
+            self.result_table.setItem(i, 2, QTableWidgetItem(articleData1))
 
     def link_doubleClicked(self):  # 링크를 더블클릭하면 호출되는 함수
         selectedRow = self.result_table.currentRow() # 더클클릭하여 선택되어 있는 행의 인덱스 반환
